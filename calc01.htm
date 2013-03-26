@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>資源獲得武将ステ振り計算機</title>
+    <link href='https://fonts.googleapis.com/css?family=Chivo:900' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+<style>
+header h1 {
+  font-size: 18pt;
+}
+
+#b input{
+	cursor:default;
+	border:none;
+	font-size: 18px;
+	text-align:center;
+	color: blue;
+}
+#r input{
+	cursor:default;
+	border:none;
+	font-size: 18px;
+	text-align:center;
+	color: red;
+}
+</style>
+<script type="text/javascript" src="calc01.js"></script>
+</head>
+<body>
+  <div id="container">
+    <div class="inner">
+        <header>
+          <h1>資源獲得武将　ステ振り計算機（勝手に改造版）</h1>
+          <h2></h2>
+        </header>
+<form name="table1">
+<table cellspacing="1"><tbody>
+<tr><th>　</th><th>LV</th><th>初期攻撃力</th><th>初期移動速度</th><th>コスト</th></tr>
+<tr>
+<th>武将</th>
+<td><input name="Lv" onkeyup="Calc1();" value="300" type="text" autocomplete="off"></td>
+<td><input name="At" onkeyup="Calc1();" value="270" type="text" autocomplete="on"></td>
+<td><input name="Sp" onkeyup="Calc1();" value="14" type="text" autocomplete="on"></td>
+<td><select id="C" name="C" onchange="Calc2();">
+<option value="1">1.0</option>
+<option value="1.5">1.5</option>
+<option value="2.0">2.0</option>
+<option selected="selected" value="2.5">2.5</option>
+<option value="3.0">3.0</option>
+<option value="3.5">3.5</option>
+<option value="4.0">4.0</option>
+</select></td>
+</tr>
+<tr><th>　</th><th>第1スキル</th><th id="r">第2スキル</th><th id="r">第3スキル</th></tr>
+<th>スキル</th>
+<td><center><select id="skill01" name="skill01" onchange="Calc2();">
+<option selected="selected" value="0">------</option>
+<option value="1">猛将の鹵獲</option>
+<option value="2">趁火打劫</option>
+<option value="3">飛将</option>
+<option value="4">迅速劫略</option>
+<option value="5">○兵突撃</option>
+<option value="6">○兵突覇</option>
+<option value="7">千里行</option>
+<option value="8">劉備の大徳</option>
+<option value="101" style="color:red">○兵の進攻</option>
+<option value="102" style="color:red">○兵の強攻</option>
+<option value="103" style="color:red">○兵の猛攻</option>
+<option value="104" style="color:red">○兵の極攻</option>
+<option value="105" style="color:red">闘将の極意</option>
+<option value="106" style="color:red">猛将の極意</option>
+<option value="107" style="color:red">鬼神の極意</option>
+<option value="108" style="color:red">神速行勢</option>
+</select>
+<select id="nskill01" name="nskill01" onchange="Calc2();">
+<option selected="selected" value="1">Lv1</option>
+<option value="2">Lv2</option>
+<option value="3">Lv3</option>
+<option value="4">Lv4</option>
+<option value="5">Lv5</option>
+<option value="6">Lv6</option>
+<option value="7">Lv7</option>
+<option value="8">Lv8</option>
+<option value="9">Lv9</option>
+<option value="10">Lv10</option>
+</select></center></td>
+<td><center><select id="skill02" name="skill02" onchange="Calc2();" style="color:red">
+<option selected="selected" value="0">------</option>
+<option value="101">○兵の進攻</option>
+<option value="102">○兵の強攻</option>
+<option value="103">○兵の猛攻</option>
+<option value="104">○兵の極攻</option>
+<option value="105">闘将の極意</option>
+<option value="106">猛将の極意</option>
+<option value="107">鬼神の極意</option>
+<option value="108">神速行勢</option>
+</select>
+<select id="nskill02" name="nskill02" onchange="Calc2();">
+<option selected="selected" value="1">Lv1</option>
+<option value="2">Lv2</option>
+<option value="3">Lv3</option>
+<option value="4">Lv4</option>
+<option value="5">Lv5</option>
+<option value="6">Lv6</option>
+<option value="7">Lv7</option>
+<option value="8">Lv8</option>
+<option value="9">Lv9</option>
+<option value="10">Lv10</option>
+</select></center></td>
+<td><center><select id="skill03" name="skill03" onchange="Calc2();" style="color:red">
+<option selected="selected" value="0">------</option>
+<option value="101">○兵の進攻</option>
+<option value="102">○兵の強攻</option>
+<option value="103">○兵の猛攻</option>
+<option value="104">○兵の極攻</option>
+<option value="105">闘将の極意</option>
+<option value="106">猛将の極意</option>
+<option value="107">鬼神の極意</option>
+<option value="108">神速行勢</option>
+</select>
+<select id="nskill03" name="nskill03" onchange="Calc2();">
+<option selected="selected" value="1">Lv1</option>
+<option value="2">Lv2</option>
+<option value="3">Lv3</option>
+<option value="4">Lv4</option>
+<option value="5">Lv5</option>
+<option value="6">Lv6</option>
+<option value="7">Lv7</option>
+<option value="8">Lv8</option>
+<option value="9">Lv9</option>
+<option value="10">Lv10</option>
+</select></center></td>
+
+<tr><th>　</th><th>攻撃力UP</th><th>移動速度UP</th><th>資源UP</th></tr>
+<th>UP率</th>
+<td><input name="Atskill" onkeyup="Calc1();" value="0" type="text"></td>
+<td><input name="Spskill" onkeyup="Calc1();" value="0" type="text"></td>
+<td><input name="Sskill" onkeyup="Calc1();" value="0" type="text"></td>
+</tr>
+<tr><th>　</th><th>片道時間</th><th>最大距離</th><th><input name="clc2" onclick="Calc3();" type="checkbox">スキル回復時間を使用</th></tr>
+<th>条件1</th>
+<td><input name="H" onkeyup="Calc1();" value="3.0" type="text" autocomplete="on"></td>
+<td><input name="Dlimit" onkeyup="Calc1();" value="900" type="text" autocomplete="on"></td>
+<td><input name="skltime" onkeyup="Calc1();" value="1.5" type="text" autocomplete="on"></td>
+</tr>
+<tr><th>　</th><th>平均劉備枚数</th><th>部隊数</th><th>出兵先</th></tr>
+<th>条件2</th>
+<td><center><select id="ryubi" name="ryubi" onchange="Calc1();">
+<option value="1">1　枚</option>
+<option value="2">2　枚</option>
+<option value="3">3　枚</option>
+<option value="4">4　枚</option>
+<option selected="selected" value="5">5　枚</option>
+</select></center></td>
+<td><center><select id="butai" name="butai" onchange="Calc1();">
+<option selected="selected" value="1">1　部隊</option>
+<option value="2">2　部隊</option>
+<option value="3">3　部隊</option>
+<option value="4">4　部隊</option>
+<option value="5">5　部隊</option>
+<option value="6">6　部隊</option>
+</select></center></td>
+<td><center><select id="akiti" name="akiti" onchange="Calc1();">
+<option selected="selected" value="0">☆1</option>
+<option value="1">☆2　木</option>
+<option value="2">☆2　岩</option>
+<option value="3">☆2　鉄</option>
+</select></center></td>
+
+<tr><th>　</th><th>訓練所</th><th>遠征訓練所</th></tr>
+<th>条件3</th>
+<td><center><select id="KLv" name="KLv" onchange="Calc1();">
+<option selected="selected" value="0">Lv0</option>
+<option value="1">Lv1</option>
+<option value="2">Lv2</option>
+<option value="3">Lv3</option>
+<option value="4">Lv4</option>
+<option value="5">Lv5</option>
+<option value="6">Lv6</option>
+<option value="7">Lv7</option>
+<option value="8">Lv8</option>
+<option value="9">Lv9</option>
+<option value="10">Lv10</option>
+</select></center></td>
+<td><center><select id="ELv" name="ELv" onchange="Calc1();">
+<option selected="selected" value="0">Lv0</option>
+<option value="1">Lv1</option>
+<option value="2">Lv2</option>
+<option value="3">Lv3</option>
+<option value="4">Lv4</option>
+<option value="5">Lv5</option>
+<option value="6">Lv6</option>
+<option value="7">Lv7</option>
+<option value="8">Lv8</option>
+<option value="9">Lv9</option>
+<option value="10">Lv10</option>
+<option value="11">Lv11</option>
+<option value="12">Lv12</option>
+<option value="13">Lv13</option>
+<option value="14">Lv14</option>
+<option value="15">Lv15</option>
+<option value="16">Lv16</option>
+<option value="17">Lv17</option>
+<option value="18">Lv18</option>
+<option value="19">Lv19</option>
+<option value="20">Lv20</option>
+</select></center></td>
+
+<th>課金</th>
+<td><input name="Aup" onclick="Calc1();" type="checkbox">攻撃力UP課金</td>
+<td></td>
+<td><input name="Sk" onclick="Calc1();" type="checkbox">即帰還</td>
+</tr>
+</tbody></table><br>
+<br>
+
+<font size="5" color="blue">計算結果</font><br>
+<br>
+<table cellspacing="1"><tbody>
+<tr><th>距離</th><th>攻撃Pt</th><th>移動速度Pt</th></tr>
+<tr id="r">
+<td><input value="" name="D" readonly="readonly" type="text"></td>
+<td><input value="" name="AtPt" readonly="readonly" type="text"></td>
+<td><input value="" name="SpPt" readonly="readonly" type="text"></td>
+</tr>
+<tr><th>片道時間</th><th>素攻撃力</th><th>素移動速度</th></tr>
+<tr id="b">
+<td><input value="" name="hf" readonly="readonly" type="text"></td>
+<td><input value="" name="Atf" readonly="readonly" type="text"></td>
+<td><input value="" name="Spf" readonly="readonly" type="text"></td>
+</tr>
+<tr><th>獲得資源量期待値</th><th>S/ch</th></tr>
+<tr id="b">
+<td><input value="" name="S" readonly="readonly" type="text"></td>
+<td><input value="" name="Sch" readonly="readonly" type="text"></td>
+</tr>
+</tbody></table>
+</form>
+<br><br><br>
+<font size="2" color="#8B4513">
+※スキルのUP率は％で入力して下さい。<br>
+※条件1について<br>
+　<font color="blue">片道時間</font>　　　　　資源獲得の出兵の時間を任意に設定してください。<br>
+　　　　 　　　　　　　片道時間が短ければ短いほど資源獲得の効率は良くなります。<br>
+　<font color="blue">最大距離</font>　　　　　自分の本拠地から全体地図の端までの距離を入力してください。<br>
+　<font color="blue">スキル回復時間</font>　スキル回復時間に合わせて、最適なステ振り計算をしたい時にチェックを入れてください。<br>
+　　　　　　　　　　　　そのかわり、自分で片道時間を指定することができなくなります。<br>
+　　　　　　　　　　　　※スキルなしの場合は、回復時間を1.5時間（討伐50→100にかかる時間）としている。<br>
+　　　　　　　　　　　　※遠征訓練所は考慮していない。（計算が複雑となるため）<br>
+　　　　　　　　　　　　※武将をデッキから降ろす場合、スキル回復時間よりもHP95→HP100にかかる時間<br>
+　　　　　　　　　　　　　のほうが長いため、神医がない場合はスキル回復時間の欄に11と入力して計算して下さい。<br>
+<br>
+※条件2について<br>
+　<font color="blue">平均劉備枚数</font>　　　出兵後にHP回復のために使う劉備の枚数を任意に設定してください。<br>
+　　　　　　　　　　　　 枚数が少なく設定すると、攻撃力を大きく設定しなくてはならなくなるので<br>
+　　　　　　　　　　　　 資源獲得の効率は悪くなります。<br>
+　<font color="blue">部隊数</font>　　　　　　　資源獲得武将を同時に出兵する時、その部隊数を設定してください。<br>
+　　　　　　　　　　　　　部隊数が多くなると、攻撃力を大きく設定しなくてはならなくなるので<br>
+　　　　　　　　　　　　　資源獲得の効率は悪くなります。<br>
+　<font color="blue">出兵先</font>　　　　　　　出兵先を選んでください。<br>
+　　　　　　　　　　　　　ほとんどの場合、☆2のほうが効率よいです。<br>
+　　　　　　　　　　　　　ただし、☆2の場合はアンチとなる兵科の武将が出兵する設定となっています。<br>
+※条件3について<br>
+　<font color="blue">訓練所</font><br>
+　<font color="blue">遠征訓練所</font>　　　　　訓練所と遠征訓練所のLvを入力してください。<br>
+<br>
+※計算結果について<br>
+　<font color="red">距離</font>　　　　　　　　　　　 　　一番効率の良い出兵先の距離です。<br>
+　<font color="red">攻撃Pt、移動速度Pt</font>　　　　武将のステ振り時のポイントです。<br>
+　<font color="blue">素攻撃力、素速度</font>　　　　　スキルを無視した時の値です。<br>
+　<font color="blue">獲得資源量期待値</font>　　　　　一回の出兵で獲得できる資源の期待値です。<br>
+　<font color="blue">S/ch</font>　　　　　　　　　　　　　獲得資源量を時間とコストで除した値で、資源効率を表します。<br>
+
+<br>
+作成者のブログ：<a href="http://ameblo.jp/bra3/">http://ameblo.jp/bra3/</a><br>
+<br>
+</font>
+<br>
+<br>
+    </div>
+  </div>
+</body></html>
