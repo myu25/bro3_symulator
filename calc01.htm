@@ -43,9 +43,9 @@ header h1 {
 <tr><th>　</th><th>LV</th><th>初期攻撃力</th><th>初期移動速度</th><th>コスト</th></tr>
 <tr>
 <th>武将</th>
-<td><input name="Lv" onkeyup="Calc1();" value="300" type="text" autocomplete="off"></td>
-<td><input name="At" onkeyup="Calc1();" value="270" type="text" autocomplete="on"></td>
-<td><input name="Sp" onkeyup="Calc1();" value="14" type="text" autocomplete="on"></td>
+<td><input name="Lv" onkeyup="Calc1();" onchange="Calc1();" value="300" type="number" min="1" max="400" autocomplete="off"></td>
+<td><input name="At" onkeyup="Calc1();" onchange="Calc1();" value="270" type="number" min="0" max="600" step="5" autocomplete="on"></td>
+<td><input name="Sp" onkeyup="Calc1();" onchange="Calc1();" value="14" type="number" min="8" max="16" step="1" autocomplete="on"></td>
 <td><select id="C" name="C" onchange="Calc2();">
 <option value="1">1.0</option>
 <option value="1.5">1.5</option>
@@ -277,8 +277,12 @@ header h1 {
 　<font color="blue">S/ch</font>　　　　　　　　　　　　　獲得資源量を時間とコストで除した値で、資源効率を表します。<br>
 
 <br>
-作成者のブログ：<a href="http://ameblo.jp/bra3/">http://ameblo.jp/bra3/</a><br>
+オリジナルのページ：<a href="http://bra3.web.fc2.com/calc01.htm">http://bra3.web.fc2.com/calc01.htm</a>
+作成者（オリジナル）のブログ：<a href="http://ameblo.jp/bra3/">http://ameblo.jp/bra3/</a><br>
 <br>
+</font>
+
+<font style="color: red;">このシミュレータは原作を勝手に改造しています。<br>
 </font>
 <br>
 <br>

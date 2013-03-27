@@ -48,7 +48,7 @@ function optcal(Lv,At,Sp,C,Atskill,Spskill,Sskill,H,Dlimit,ryubi,butai,Aup,Sk,ak
 	Atd=(Fac1[2]*D+Fac1[3])*eval(Tanakatable(ryubi,butai));
 	AtPt=Math.ceil(eval((Atd/(At*(1+Atskill*0.01)*Aupp)-1)/0.094));
 	SpPt=Lv*5-AtPt;
-	S=D*Fac1[4]*15*(1+Sskill*0.01);
+	S=D*Fac1[4]*10*(1+Sskill*0.01);
 	Spf=(SpPt*0.012+1)*Sp;
 //	hf=D/(Spf*(1+0.01*Spskill));
 	hf=D/(Spf*(1+0.01*Spskill+0.05*KLv+D*ELv1));
